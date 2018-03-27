@@ -1,0 +1,9 @@
+{
+  "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+  "settings": {
+    "documentationRules": {
+      "companyName": "Weeger Jean-Marc",
+      "copyrightText": "Copyright Weeger Jean-Marc under MIT Licence. See https://opensource.org/licenses/mit-license.php."
+    }
+  }
+}

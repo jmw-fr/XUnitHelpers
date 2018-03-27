@@ -1,0 +1,19 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Jmw.XUnitHelpers</id>
+    <version>1.0</version>
+    <description>xUnit helpers</description>
+    <authors>Jm Weeger</authors>
+    <projectUrl>https://github.com/jmw-fr/XUnitHelpers</projectUrl>
+    <tags>xUnit Database Fixture</tags>
+    <dependencies>
+      <dependency id="xunit.core" version="2.3.1" />
+      <dependency id="System.Data.Common.core" version="4.3.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="src\xUnitHelpers\bin\Release\netstandard1.3\*.dll" target="lib\netstandard1.3" />
+    <file src="src\xUnitHelpers\bin\Release\netstandard1.3\*.xml" target="lib\netstandard1.3" />
+  </files>
+</package>
