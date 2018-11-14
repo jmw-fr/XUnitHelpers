@@ -22,15 +22,54 @@ namespace Jmw.XUnitHelpers
         /// Initializes a new instance of the <see cref="DatabaseFixture{T}"/> class.
         /// Constructeur
         /// </summary>
-        public DatabaseFixture()
+        /// <param name="insertFixtures">Insert the fixture data.
+        /// If <c>false</c>, data must be manually inserted with <see cref="InsertFixtures"/>.
+        /// Setting this attribute to <c>false</c>, allow to delay the inserting when only needed (for instance after variable initialization).
+        /// </param>
+        public DatabaseFixture(bool insertFixtures = true)
         {
-            this.Execute(this.GetFixturesSQLOrders());
+            if (insertFixtures)
+            {
+                InsertFixtures();
+            }
         }
+
+        /// <summary>
+        /// Gets a value indicating whether the fixtures have been executed.
+        /// </summary>
+        public bool FixturesExecuted { get; private set; }
 
         /// <inheritdoc />
         public virtual void Dispose()
         {
-            this.Execute(this.GetRemoveFixturesSQLOrders());
+            RemoveFixtures();
+        }
+
+        /// <summary>
+        /// Execute the SQL orders from <see cref="GetFixturesSQLOrders"/>.
+        /// </summary>
+        /// <remarks>The orders are excecuted only once</remarks>
+        public void InsertFixtures()
+        {
+            if (!FixturesExecuted)
+            {
+                this.Execute(this.GetFixturesSQLOrders());
+
+                FixturesExecuted = true;
+            }
+        }
+
+        /// <summary>
+        /// Execute the SQL orders from <see cref="GetFixturesSQLOrders"/>.
+        /// </summary>
+        public void RemoveFixtures()
+        {
+            if (FixturesExecuted)
+            {
+                this.Execute(this.GetRemoveFixturesSQLOrders());
+
+                FixturesExecuted = false;
+            }
         }
 
         /// <summary>
@@ -58,18 +97,19 @@ namespace Jmw.XUnitHelpers
                 connection.ConnectionString = this.GetConnectionString();
                 connection.Open();
 
-                var trans = connection.BeginTransaction();
-
-                var command = connection.CreateCommand();
-                command.CommandType = System.Data.CommandType.Text;
-
-                foreach (string sql in data)
+                using (var trans = connection.BeginTransaction())
                 {
-                    command.CommandText = sql;
-                    command.ExecuteNonQuery();
-                }
+                    var command = connection.CreateCommand();
+                    command.CommandType = System.Data.CommandType.Text;
 
-                trans.Commit();
+                    foreach (string sql in data)
+                    {
+                        command.CommandText = sql;
+                        command.ExecuteNonQuery();
+                    }
+
+                    trans.Commit();
+                }
             }
         }
     }

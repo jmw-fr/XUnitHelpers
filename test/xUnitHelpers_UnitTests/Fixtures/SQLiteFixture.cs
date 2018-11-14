@@ -16,6 +16,14 @@ namespace Jmw.XUnitHelpers.Tests.Fixtures
     public class SQLiteFixture : DatabaseFixture<SqliteConnection>
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="SQLiteFixture"/> class.
+        /// </summary>
+        public SQLiteFixture()
+            : base(false)
+        {
+        }
+
+        /// <summary>
         /// Override of <see cref="DatabaseFixture{T}.Dispose"/> to allow deletion of sqlite file.
         /// </summary>
         public override void Dispose()

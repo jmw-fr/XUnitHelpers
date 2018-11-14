@@ -39,7 +39,7 @@ namespace Jmw.XUnitHelpers.Tests.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Jmw.xUnitHelpers.Tests.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Jmw.XUnitHelpers.Tests.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,13 @@ namespace Jmw.XUnitHelpers.Tests.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to CREATE TABLE `test` (
+        ///	`id`	INTEGER,
+        ///	`name`	TEXT NOT NULL,
+        ///	PRIMARY KEY(`Id`)
+        ///);
+        ///
+        ///INSERT INTO `test` (`id`, `name`) VALUES (1, &apos;Name&apos;);.
         /// </summary>
         internal static string CreateFixtures {
             get {
@@ -70,7 +76,10 @@ namespace Jmw.XUnitHelpers.Tests.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to DELETE FROM `test`;
+        ///
+        ///DROP TABLE `test`;
+        ///.
         /// </summary>
         internal static string RemoveFixtures {
             get {

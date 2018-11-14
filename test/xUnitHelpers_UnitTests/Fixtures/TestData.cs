@@ -1,4 +1,4 @@
-﻿// <copyright file="Test.cs" company="Weeger Jean-Marc">
+﻿// <copyright file="TestData.cs" company="Weeger Jean-Marc">
 // Copyright Weeger Jean-Marc under MIT Licence. See https://opensource.org/licenses/mit-license.php.
 // </copyright>
 
@@ -7,7 +7,7 @@ namespace Jmw.XUnitHelpers.Tests.Fixtures
     /// <summary>
     /// Model for <see cref="DatabaseFixture_UnitTest"/>.
     /// </summary>
-    public class Test
+    public class TestData
     {
         /// <summary>
         /// Gets or sets Id value
